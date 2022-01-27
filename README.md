@@ -11,6 +11,6 @@ The course dealt with the following topics:
 * Continuous Integration & Delivery (Jenkins) and main tool (Maven) 
 * Relational Databases and noSQL (Oracle, Couchbase, Mongo)
 
-In this repo I have uploaded all the exercises and explanations for each one.
+In this repo I have uploaded all the exercises done and explanations for each one.
 
 Contributors are welcome!
