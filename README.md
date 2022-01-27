@@ -1,5 +1,5 @@
 # Academy Java Microservices
-Milano (Italy) January 2019
+Milano (Italy), January 2019
 
 The course dealt with the following topics:
 
