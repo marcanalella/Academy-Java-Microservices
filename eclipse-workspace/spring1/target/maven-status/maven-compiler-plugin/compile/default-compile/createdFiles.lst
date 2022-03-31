@@ -1,0 +1,5 @@
+com/acme/spring1/NameService.class
+com/acme/spring1/impl/DefaultNameService.class
+com/acme/spring1/HelloService.class
+com/acme/spring1/impl/DefaultHelloService.class
+spring1/Main.class

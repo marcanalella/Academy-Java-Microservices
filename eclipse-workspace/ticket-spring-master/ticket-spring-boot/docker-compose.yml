@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+
+  ticket:
+    image: "acme/ticket-spring-boot:latest"
+    container_name: "ticket"
+    depends_on: 
+      - "h2"
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=h2
+    # Properties for application.properties
+      - DATASOURCE_DRIVER=org.h2.Driver
+      - DATASOURCE_URL=jdbc:h2:tcp://h2:1521/~/ticket
+      - DATASOURCE_USERNAME=sa
+      - DATASOURCE_PASSWORD=
+    # (credentials here are problematic for security)
+
+  h2:
+    image: "1000kit/h2"
+    container_name: "h2"
+    ports:
+      - "8181:8181"
+      - "1521:1521"
+    volumes:
+        - "$HOME/h2-docker:/opt/h2-data"
+
+  mongodb:
+    image: "mongo:4.1.5"
+    container_name: "mongodb"
+    ports:
+      - "27017:27017"
+    
+  mongodb-client:
+    image: "mongo:4.1.5"
+    container_name: "mongodb-client"
+
+    
+    
+    

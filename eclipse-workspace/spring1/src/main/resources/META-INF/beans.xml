@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byType">
+       
+       <context:annotation-config/>
+       
+       <bean id="nameService" class="com.acme.spring1.impl.DefaultNameService">
+       		<property name="name" value="Paperino" />
+       </bean>
+
+<!--        <bean id="helloService"  -->
+<!--              class="com.acme.spring1.impl.DefaultHelloService" -->
+<!--              scope="prototype"> -->
+<!--        		<property name="nameSvc" ref="nameService" /> -->
+<!--        </bean> -->
+
+<!--        <bean id="helloService" class="com.acme.spring1.impl.DefaultHelloService2"> -->
+<!--        		<constructor-arg ref="nameService" /> -->
+<!--        </bean> -->
+
+		<bean id="helloServiceFactory"
+			  class="com.acme.spring1.impl.DefaultHelloServiceFactory">
+	    </bean>
+
+		<bean id="helloService" 
+			  factory-bean="helloServiceFactory"
+			  factory-method="createHelloService"
+			  scope="prototype">
+	    </bean>
+			  
+<!-- 		<bean id="helloService"  -->
+<!-- 			  class="com.acme.spring1.impl.DefaultHelloServiceFactory" -->
+<!-- 			  factory-method="createHelloService"> -->
+<!-- 	    </bean> -->
+
+</beans>
