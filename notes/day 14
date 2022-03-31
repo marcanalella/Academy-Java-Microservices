@@ -1,0 +1,43 @@
+WEBSOCKET
+permette di far cose coome il multicasting, cioè se mi collego alla chat e nn faccio nnt mi arrivano i messaggi degli altri che possono essere asincroni.
+conjava script si associano 4 funzioni che permettono di sapere se è succ qlks.
+MessageEncoder è una classa che converte un oggetto non string in testo.
+
+l oggetto sessione rappresenta lo stato conversazionale, ha una getuserproperty per memorizzre dati della sessione.get sinc remot mando mess sincroni devo avere risposta, e getAsynRemot messaggio che può nn avere risposta.
+
+
+
+EJB
+Session bean: è una classse pojo come i managed bean,è un controllore, quindi espone metodi di business , può avere annotazioni che lo fanno diventare un componente:
+@Stateless (SLSB): il più comune, uso condiviso:nn si usa piu .rispondo a una richiesta e la risolvo durante il periodo della telefonata, non ho bisogno di ricordarmi altre cose, finita la tel mi rimetto nel pooling di telefonate.ad ogni invocazione di metodo risponde un istanza diversa.in 10 gestiamo 100 clienti.
+@Stateful (SFSB): conversazionale per utente:lo stesso cliente mi può chiamare piu volte e devo ricordarmi dello stato della convers, devo essere sicuro che mi risponde lo stesso operatore sempre, quindi ogni volta che faccio una richiesta mi viene associata un istanza associata a me finche nn esisto.nn ho bisogno di acedere al DB xke mi ricordo di quello che mi serve .
+
+@Singleton (SSB): accesso a dati condivisi:nn ha stato conversazionale.
+Locale : nell setssa web app e stesso server.
+@Remote: il componente si esporta quindi u comp remoto può essre visto anche da un altra webapp.
+L iniezione nn si fa con @Inject ma con @EJB
+Proxy remoto:collabora con applicationserver e spedisce messaggi di rete tra server .
+Può essere anche spostato su un altra macchina (bilanciamento del carico...se un server a troppe richieste vengono distribuite tra i server).
+
+CLUSTER:gruppo di server sotto la stessa rete che collaborano.
+
+Sincronicità : vuol dire io che ho fatto la richiesta rimango in attesa finche nn ho risposta.e sono bloccato se nn ho risposta.
+
+Pattern JMS
+Publish / Subscribe uno dei pattern piu importanti:ho il bus come nell pc quindi tutte le mie classi sono collegate ad un unico bus, non ho piu interfacce perche nn conosco chi ce nel sistema, cconosco solo il bus che permette di fare 2 cose:spedire o ricevere un messsagio (publish :crreo ogg java e lo passo a un metodo send)(subcrive:ricevere un mess signiifica fare una sottoscrizione , formalizzo l insieme di messaggi che circolano nel bus.)
+una classe può dire io mi abbono a rivecere un certo tipo di messaggi che per me hanno senso.
+esempio : la classe A (che nn conosce nessun )spedisce un messggio x, tutte le classi che si sono sottoscritte all aricezione di messaggi di tipo x lo possono ricevere .le classi nn rispondono pi a metodi su interfaccia ma rispondo a messagi . 
+L importanza è spostata sulla semantica dei messagi .
+l invocazione di metodi di interfacce sono sosti da un vocabolario con una struttura precisa.
+Il bus è chiamato Enterprice Service Bus ESB.
+L invio di messaggi è basato sul fatto che io invio un unica volta e viene letto contmporaneamente da tutti i componenti.(Multicasting).
+Sistema basato sulla capacità di consegnare messaggi che non devono essere persi anche se mi rompo per 10 secondi ....qnd mi rialzo li riprendo.
+L API per gestire tutto cio è JavaMessageService JSM:
+si parte da un JMSContext che contiene SESSIN e CONNECTION .iniettandolo.
+JMSProducer interfaccia per spedizione messagi,sempre asincrono .
+JMSConsuemer permette di leggere i messagi  ,puo essere sia asincrono che sincrono.non lo manipolo .
+mi devo far iniettare anche la coda con @Resource()
+Se mi arriva un messaggio che causa un eccezione dopo tot tentativi (se è una coda transazionale)che riprovo a consegnarlo lo prendo e lo sposto da un altra parte xke se no mi blocca tutto il resto dei messaggi in coda .(PILLOLA AVVELENATA).
+generalmente le code sono progettate in modo che ogni messagio ha tutte le informazione e si puo ottenere un parallelismo.
+
+

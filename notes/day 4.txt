@@ -1,0 +1,137 @@
+ZoneId rappresenta il fuso orario = gestisce l'ora legale utilizzata piu per caratte amministrativo
+ZoneId romeZone = ZoneId.of("Europe/Rome");
+ZonedDateTime è una data con fuso (e ora legale)
+LocalDateTime dateTime =    LocalDateTime.of(2014, MARCH, 18, 13, 45); ZonedDateTime zdt1 = dateTime.atZone(romeZone)
+LocalDate date = LocalDate.of(2014, MARCH, 18); ZonedDateTime zdt2 = date.atStartOfDay(romeZone);
+Instant instant = Instant.now(); ZonedDateTime zdt3 = instant.atZone(romeZone);
+
+
+ZoneOffset rappresenta una differenza di fuso non gestisce ora legale viene utilizzato per carattere scientifico 
+ZoneOffset newYorkOffset = ZoneOffset.of("-05:00"); • OffsetDateTime è l’analoga di ZonedDateTime • LocalDateTime dateTime =     LocalDateTime.of(2014, MARCH, 18, 13, 45); • OffsetDateTime dateTimeInNY =     OffsetDateTime.of(date, newYorkOffset);
+
+
+Programmazione concorrente
+
+Devo effettuare piu cose contemporaneamente. Multi processi quando le strutture dati sono separate, fork crare un clone. Java multithred che
+la struttura dati viene condivisa, piu flussi di esecuzione sullo stesso processo, avantaggiato per ad avere pi thed che fanno la stessa cosa
+Quano parte il thred e 1 piu quelli che creo quindi se creo 2 thred in totale ne avrò 3.
+
+Rissumendo
+
+-1 per motivi di desain excute o excuteService e runnable 
+-2 Variabili intere che vengono mod prima di tutto devono essere volatili, secondariamnte i punti che accedono devono esssere sincronizzati
+ci sono anche variabili atomiche che ti permettono di lavorare piu facilmente.
+Le liste non sono protette ma utilizzo le collezioni concorrenti che sono fatte apposta per queste cose, wait notifay notifayall , ma il codice 
+diventa lungo , scopriamo che ci sono delle code che riducono il codive.
+Bidogna ricordarsi la fine dei thred utilizzare interrupted , ci vuole un po di ragionamento di come termina veramente si puo utilizzare il
+countDown che mi aiutano per il conteggio e verifica la fine del contegg
+
+Rest architettura
+rest non e fremwark non e una tecnoligia e un modo di ragionare schemi e di vincoli da non fare e da fare. Una pagina ben fatta un sito web
+dovrebbe essere una serie di stati rappresentato da una url cliccando sui link ma questi stati dovrebbero essere statici. 
+
+
+
+che cosa è JEE?
+1- e un inseime di specifiche jsr sono documenti prodotti da gruppi specifici che dicono come si fanno le cose. A questo punto il gruppo di lavoro 
+forniscono reference cioe codice di interpretazione, schema architettura piu dettagliati di quelli di java. L'inplementazione di riferimento 
+ma ce ne piu di una perche ci sono vari prodotti alternativi. il sistema di sviluppo deve contenere uno di questi ecosistemi application server
+La server si chiama GlassFish - noi utilizzeremo White fly. Devo seguire una linea di architetture specifica funzionali (Beesness)
+cosa non funzionale come (qunati utenti avro come evolvero questione trasversale). Sole le specifiche funzionali deve diventare codice.Io scriveri
+dei componenti fatti in applicativo - i servizio di sistemi sono contenitori.
+Un'altra caratteristica componente il codice una parte diventa un componente un altra no, non mi devo preoccupare del cicli di vita e una
+responsabilita del container la cosa piu importante ho piu componenti.
+
+-il layer per eseguire un app. abbiamo la coperazione di software e alberi
+Il codice che apre mi fa scrivere le cose con formalismo che mi piace, il sistema operativo parla con i dispositivi logici e fisici sulla macchina
+infine abbiamo hardware.
+
+2- dimensione ortogonale
+E stato presentato 
+- client sono i browse palmari smartphone ecc.. e piu soggetto dalle mode
+- persistenza mettere accesso in remoto, salvare i dati per la sopravvivenza dei dati allo spegnimento della macchina
+Con l avvento delle tecnologie 
+-busines procedure di elaborazione che ricevono da una parte le richieste del client e dall'altra parte del database la parte piu importante
+ e si evolve ma non si stravolge
+gli altri due strati sono dei cuscinetti = sono strati che proteggono lo strato del business
+-presentetion interagistre tra client e business cioe devo esssere sul cliente ma proteggere le informazioni relativi hai metodi di programmazione
+-integrazione = protegge dalla persistenza quindi dai database 
+
+-3 la sicurezza la persistenza la capacita di scalare l'affidabilita
+
+Cubo architetturale = analizzare tutte le cose da fare e associarle ad un cubo piu piccolo
+
+Con jee java non centra sul client, database quindi ci si concentra sui tre strati centrali , quindi web container riguardal il cuscinetto presentetion
+mentre gli altri due strati(business e integrazione) sono detti business container.
+Questo modello sta crollando perche adesso ce il cloud
+
+Transazionalita = se sto vendend dei servizio e io dei crediti ricaricabili devo assicurarmi che i crediti sia sclati o viceversa
+networkin 
+Threding = operazioni paralleli
+Sicurezza = loggato fare solo cose che deve fare
+Persistenza = blak out alluvione ecc manutenzione straordinario assicurarmi che tutto venga salvato
+deploymente= 
+Scalabilita saper gestire 100 0 mille processi al secondo 
+alta affidibilita devo avere un sistema da spento che non ferma il mio busines quindi il mio sistema stia in piedi
+
+Le speciche funzionali si programmano , le specifiche non si programmano
+
+Tutto questo porta al Application Web 
+
+Programmazione orientata agli eventi
+web_inf codice compila file di configurazione
+
+Servlet primo componente che risponde ad una richiesta esterna, componente capace di gestire protocollo clienr-sever http servlet 
+specializzato nel gestire il protocollo http. Ogni servet e mappata. o Xml o annotazione una delle due ci deve essere se dovvessero essere
+tutti e du evince il file xml
+
+Leggere parametri, validazione formale vedeere se i parametri hanno un senso( controllora i verifica dei daty) impostare logica di busness
+rendrizzare i dati.Le servele front controller di presentazione. jsp 
+
+Servele classe java ed estende deve avere metadati almeno uno attarverso una notazione, riflette la sua natura datata nel fatto ci richiede 
+di estendere un interfaccia perche brucia l unica possibilità di ereditarieta. Un altro motivo negativo dell extesn
+ce la connessione con l application server questo significa se vorrei fare un test avrei dificolta proprio per questa exstens.Request metodi get
+collegati una richiesta responese invece metodi per la richiesta risposta. Secondo comonente la jsp e una pagina di testo dentro il quale
+e annegato il codice java <% %> possiamo valutare in certi punti espressioni java per produrre dei dati, html che puo contenere pezzi di 
+java. il servlet e un controlle di presentazione quindi stabilisci una serie di istruzione da eseguire la parte di rendering viene fatto dalla 
+jsp. RequestDispacer a chi voglia dare il controllo forward glielo passo set attibute della request doce puo essere recuerato dalla jsp. jap
+una serie di piccole espressione dove andare a recuperare informazioni. Questa collaborazioniun famoso batter chiamato mvc (model view controllerl)
+
+Maven erdita di defoul parecchi pacchetti
+e pom e l'esplicitazione di quello che abbiamo + quello che eredito da maven.
+Cosa importante pom di default e sufficiente per fare delle build ma non e definito in tutti gli aspetti e non esotto il mio controllo ovverere definisce certe versioni dei plugin 
+piu recenti ma non e detto che mi servono per ora questo problema lo lasciamo perdere, si ha un pom aziendale che si eredita opportune,
+che mi garantisce la funzionalita.
+cartella webapp deve contenere le cartelle meta-inf web-inf
+
+Esercizio maven
+Supermercato Catalogo prodotti viene visuallizzato su html
+Ogni area funzionale a il suo front controller fron controller per il carello della spesa e una per front dello scontrino quindi avremo 3
+servlet.
+Qunado creo una servlet in url mapping devo scrivere /nomeservletminuscolo clicco sul nome edit. MAven non intersse il server di riferimento
+io devo assicurarmi che il progetto sia compilabile ovunque io mi dovro procurare i plugin per l esecuzione.
+<scope> provided mi serve solo per la compilazione ma non la mette nella lbreria - runtime - niete.
+
+Il server e un singleton inizializzato in un unica coppia, associta un thred ad una richiesta conf. da strumenti amministrativi, devo specificare qualcosa per il ciclo di vita
+Per attivarlo bisognava creare il suo file di configurazione.
+
+Le classi non devono essere final cioe e una classe sterile non puo avere sotto classi.
+
+
+war deploiato sul web 
+Dal punto di vista logico ma se guardo il codice non so dove va a finire se war va a finire sul contenitore web
+strato di web 
+get nella forma serve solo per fare delle query non devo usarla per inserire i dati ma solo per fare delle query
+post spedisci quando devo fare una modifica inserimento di dati nel sistema
+Gli stati intermedi non devo farli vedere nella url ogni volta che atterro nella pagina deve avere senso se ha un senso la url associata
+deve essere la stessa.
+
+
+REst
+E uno stile architetturale di come progettare uno stile architecturale. 
+
+
+
+
+
+

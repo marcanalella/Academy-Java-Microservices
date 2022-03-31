@@ -1,0 +1,72 @@
+Qnd faccio un persist dovrei farlo sia sull entità sia sulle classi nella sua relazione, 
+altrimenti posso fare op a cascata(cioe fai tutto qll che faccio in qst entity anche nelle altre),
+qst è comodo per la ONE TO one qnd ad ogni entity corrisponde una unica relazione in ogni entity.
+In manyto one bisogna farlo a mano e vedere se ce gia un ogg altrimenti lo creiamo.
+Ogni volta che abbiamo una many to many possiamo specificare un parametro di fetchType:
+ci possono essere due modalità lazy e eager:Il caricamento EAGER indica che l’oggetto di campo/relazione sarà caricato al momento della creazione dell’oggetto padre che lo contiene. Il caricamento LAZY indica invece che l’oggetto di relazione sarà caricato al momento dell’invocazione del metodo sul quale è applicata l’annotation che specifica la modalità LAZY.
+
+
+La merge() si può fare di un detached.
+
+EntityManager
+• Può essere iniettato con @PersistenceContext.
+
+
+WEBSERVICES:
+rest è piu vecchio ma i web services si son diffusi prima.
+con rest espongo risorse su cui la semantica è sempre la stessa .
+con WS espongo metodi a piacere con nomi  apiacere.nn è orientato alla risorsa.
+si basa su protocollo di comunicazione neutro(xml), il protocollo di trasporto è http.
+lo vediamo su due strati:o su qll di presentazione(android o iphone),oppure sulla stato di integrazione.Su B2C si preferisce rest.
+firewall sistema che controlla il traffico in uscita ed entrata di un azienda di una rete .
+il protocollo http fa si che tutte le aziende posso scambiarsi informazioni.
+CoRBA : architettura per realizzazione di un broker comune di richieste ad oggetti(un sistema che smista richiesta da un origine a destinazione),
+vecchio e pensato per reti proprietarie nn utilizzava http.
+i WS prevede servizi trasversali:criptografia , autenticazione.
+serv verticali:ess che indicano trasferimenti di soldi , fatturazione elettronica.
+
+auto-descrittivo(WSDL):sempre corredato da un file xml che lo descrive in tutto.
+la maggiornr parte sono sincroni:ce un chiamante e riceve una risposta,ma possono essere anche asincroni.
+RPC:vuol dire che eseguo dei comandi(chiudi conto scarica magazzino accenti termosifone,setta la teperatura  a..).
+document based:se mando una fattura ad un indirizzo in grado di processarla posso nn secificare le op da effetuare.
+i WB sono una specifica e quindi si pu fare solo qll che dicono che si puo fare .
+
+
+SOA:service oriented architecture:è uno stile architetturale.(si può paragonare a REST).
+si può impleentare tramite WS.
+l idea è : ho dei serizi esposti in rete , non ho un punto di accesso ma ne ho tanti xke ho diversi servizi e ognuno fa quello che lo compete, i servizi collabborano insieme, se faccio una richiesta parlo con piu servizi (nella pub aministrazione dobbiamo dire chi siamo, useremo un servizio che ci autentiche sulla base di altri servizi tipo carta identità).
+Sendere e REcever:
+Ultimante Sendere: estremo 
+Soa presume di saper gestire richieste e risposte seconod le specifiche(in modo certificato), non si può iprovvisare.a differenza di REST.
+infatti dove è convolta la pubblica amministrazione non si usa rest ma soa.
+REST e soap 2 mondi che usano tecnologie diverse, sopratt la visione architetturale è completamente diversa, ci sono anche parti che sono uguali .(rest manipolazione di risorse con le 4 op fondamentali)(soa è un mondo complesso in cui tutto deve essere stato specificato).
+pseudo rest : voglio fare soa ma usando rest.
+Spezifica:iintegrazione da linguaggi diversi , per farlo ho bisongo di una lingua neutra per descrivere interfacce(IDL).idl deve contenere il formalismo per sapere come interagire col webservices.
+STUB:pezzi di codice lato client per parlare con un servizio (lato serve scheleton).
+L idea è che il codice di servizio deve essere generat automatic .
+
+
+Creare WEBSERVICE:
+annotazione @WebService sulla classe.
+(usano solo la  POST )
+WSDL:formalismo del webserver sootto forma di schema(schima).Contiene tutto .
+in XML esiste un formalismo chiamato schema che serve per fare la validazione formale dell xml.(es. l attributo id deve stare dentro pippo che sta dentro paperino, non mi interessa id che valore ha ).vengono anche descritti tutte le richieste e risposte e i tipi che accettano che saranno 2*numero metodi nel webserver. 
+per ogni classe e o interfaccia esiste un :
+PortType= interfaccia in java.che definisce tutti gli imput e output .
+
+in xml ci sono i namespace che hanno la stessa funzione dei package.
+il namespace si identifica con una stringa,gli viene associato un prefisso, uno schema è un vocabolario.
+Binding :specifica il protocollo ,cioe come viene codificato il SOAP.
+ 
+SE il WSDL è fatto male non è detto che i tool se ne accorgano.
+per creare un WSDL usa un tool (di eclipse ad es.)...mai a mano!!
+ 
+CONSORZIO WS-I ....hanno creato delle specifice che assicurano l interoperabilità .
+
+Codifiche soap: sono un prod cartesiano tra RPC e Document vs Literal e Encoded.
+ce ne so 5 ma la buona è Document/Literal Wrapper(per probliemi di cmpatibilità) , ma non è presente in nessuna specifica.in qst codifca il nome del messaggio viene fatto coincidere col nome del metodo .(il nome del mess sarà hello e non piu helloRequest).
+ 
+Soap Fault:errore, corrisponde ad un eccezione java:
+fualdcode: codice errore.
+faultactor:origine dell errore.
+

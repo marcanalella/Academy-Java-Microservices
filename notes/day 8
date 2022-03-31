@@ -1,0 +1,16 @@
+@Inject:
+aggiungo annotazio a una classe per farla diventare un componente.se ho un coponente posso farlo iniettare cioè se ho bisogno di creare una collaborazine tra due classi . 
+POST constructr: è inizializzatore , è fatto partire dall app server 
+PRE destroy: chiamato qnd l ogg sta per essere distrutto .mi serve se apro un risorsa del sistema un file.
+nell INDEX.HTML inserisco le voci dei menu che voglio .
+non devo usare get per inserire un dato, solo per fare una query.
+si usa POST per fare una modifica o inserimento di dati nel ssistema .
+get per fare una query e nn modifica lo stato dell app.
+la post invia dati all app e modifica lo stato dell app.
+Gli stati intermedi tipo process add non li devo far vedere sul browser.
+@SessionScoped //sessione di richieste e risposte assoiate allo stesso utente.
+Faced://Faced:coordina più di un oggetto business esponendo "metodi atomici".
+Passivating SCOPE:non è lo scope di request (session scope è passivanting) oltre postcont e pred ci sono due passivazione e attivazione.la passivaz è la poss che l app server decida di spostare l istanza del bean.o sul disco per liberare spazio in memoria.xkeun bean di sessione è vivo finche l utante nn finisce la sessione.allora se siamo a corto di memoria li metto sul disco.se l utente si addormenta  e qnd si sveglia li ricarico in memoria.
+alcuni componenti possono avere requisiti aggiuntivi:questo lo vedoo nel log di wildfly.
+url pulite sono delle get le url di transizione possono essere delle post xke modificano lo stato interno e devo cercare di nn farle mai vedere.
+REST:è uno stile architetturale con dei vincoli e con delle best practies(sarebbe meglio fare in un certo modo ).Representational State Transfer ....basata su traferimento della azioni dello stato dell app.un app rest espone risorse manipolabili attraverso rappresentazioni, il primo pezzo di rappresentazionu è la url.(la pag htmp con i prodotti è una rappresentazione).un prodotto in particolare avrà url http/localhost/product/HCXG3 ,l ultimo pezzo è una chiave .Il server REST è stateless.in un sist rest se compro u prodotto ci deve essere qks che dice tieni la lista di prodotti e la memorizza nel browser, qnd voglio aggiungere un nuovo prod è lo javascript che aggiunge un nuovo prodotto e chiama il server ...se è rest posso staccare la spina e farlo ripartire in modo che gli utenti nn se ne accorgono ....il carrrello della spesa rimane salvato sulle loro macchine .i dati della sessione sono memorizzati sul client. un sist rest non ha storia, posso testare ogni singola richiesta separatamente.nn ce la sessione sul server .  

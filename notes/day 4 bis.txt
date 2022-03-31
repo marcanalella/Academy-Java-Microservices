@@ -1,0 +1,18 @@
+comportamento pluggabile: un metodo a cui passo una funzione che elabora i dati .
+def di fun lambda : niente di nuovo ma sintassi migliorata per scrivere le inner class , ogni lambda nn ha nome , nn la posso usare da altre parti(xcio anonima), rappresenta un funz matematica, è qlks che definisce un imputo ed ha un output, l elaborazione dve essere solo funzione dei parametri passati e produrre un risultato, sono pensate per un modo di ragionare specifico ovvero elaborare i dati come funzioni. le funzioni sono passate come argomenti a metodi , quindi ce un esecuzioe ritardata.
+Si parte da un interfaccia con un singolo metodo.
+la firma del metodo è piu importante della funzione stessa.
+non posso avere due funzioni con lo stesso nome ma che hanno input e output uguali.
+ Un predicato è una funzione che restituisce un valore booleano.
+Metodo di default: può essere messo in un interfaccia e può essere implementato , sono metodi che hanno un implementazione di default.(da java 8 ).
+Se un interfaccia ha un metodo di defaul lo eredito.
+Un interfaccia funzionale ha un unico metodo astratto, n metodi di defaul,n metodi statici.
+tutte le interfacce hanno metodi di default che consento di fare operazioni sulle funzioni, come ad esempiola composizione .
+
+cos'è un errore:codice scritto male.
+errore catastrofico:errore interno di VM , out of memory error(stiamo consumando la memoria).
+errori sollevati da me.
+devo gesstire il problema:rivelare chi rivela l errore e a chi devo dare carico di risolvere .
+ECCEZIONI
+basata su throw e cath.
+

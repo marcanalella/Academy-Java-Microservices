@@ -1,0 +1,34 @@
+REST: molto focalizzato su come progettare le url .
+stato conversazionale:memoria di qll che stanno facendo gli utenti.
+ogni richiesta è elaborabile esculisivamente sui parametri della richiesta e nn cn qlks in memoria di richieste passata.
+REST:performance su rete potenzialmente ridotta.
+si fa ampio uso di cache, l interfaccia è uniforme ..In rest non possiamo inventarci operazioni come addproduct addshoppingcart, con rest ho sempre e solo 4 operazioni:get,post,put e delete.
+(che rappresentano create recupera,update.remove...operazioni che si possono fare su database).
+ le url sono i nomi delle risorse e rappresentano connessioni tra risorse.
+Devo sempre pensare se una risorsa è cacheabile o no .
+(un articolo scentifico di giornale lo è per sempre poiche nn cambia una volta publiccato).
+i client devono essere fatti con javascript .
+si sono dei script tipo angular che sono fatti per parlare con sist rest di default.
+ogni risorsa ha una chiave univoca che è la sua url!!(che una volta creata nn cambia piu nome )
+Le url contengono solo nomi e nn verbi.
+i servlet sono molto di basso livello .
+
+Si basa tutto su iniezioni e annotazioni.
+per rest bast fare una classe che extends application con annotazione @ApplicationPath .
+ 
+CURL -X POSToGET per cambiare metodo.
+curl -v -X POST -H"Content-Type: text/plain" http://localhost:8080/REST/rest/greeting
+: per dirgli che il tipo che gli ho dato .
+--data parametri da passare.
+la GET è di default.
+-v per avere dettagli richiesta risposta.
+I queryparam possono essere solo tipi primitivi.
+
+Sttuttura dati piu elaborate si gestiscono non con rest ma con l api jaxb che collega rapp xml a rappresentazioni java.
+
+curl -v -H"Accept: application/json" "http://localhost:8080/REST/rest/cr" : per specificare il tipo di codifica (application/json).
+la diff tra xml e json è che xml ha la capacità di usare un dizionario(schima xml).
+
+
+
+

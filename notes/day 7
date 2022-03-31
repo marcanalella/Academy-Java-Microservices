@@ -1,0 +1,17 @@
+SErvlet:
+progettato per gestire richieste http.é un controller di presentazione.e stabilisce una serie di istruzioni .non si occupa della parte di rendering.
+JSP è una pagina di test in cui ce del codice java con un apposita sintassi <% ... %>,si occupa del rendering e non dell elaborazione e presenterà i dati finali all utente .
+REQUESTDISPAtcher:decide a chi vogliamo dare il control0lo (dell jsp???)
+Inizializzare Git...modello/cli dx /show in / terminal/ dai comando: git init.
+EFFECTIVE POM:non editabile,è l esplicitazione di quello che abbiamo piu quello che abbiamo ereditato.
+SuperPom:pom aziendale con versioni di tutti i plug i che usa l azienda .
+packaging WAR:classe web .
+ MAVEN clean per ripulire qnd abbiamo fatto molte modifiche,cancella la directory target.
+le cartella delle jsp rappresenta aree funzionali diverse .
+maven deploy:installo sul repository aziendale .
+iniezione delle dipendenze:non devo specificare le implementazioni che mi servono ,e nn devo sapere qualè.funziona solo con un componente.
+servlet è un singleton ,cioe viene inizializzato con un unica copia.
+le variabili di campo cm progecmanager dovrebbero essere singleton anche loro .
+Application scope: questa istanza è visibile in tutta l applicazione.
+RequestScope:ciclo di vita collegano solo alla richiesta corrente.
+CLASS FINAL: nn si può fare su una web app.

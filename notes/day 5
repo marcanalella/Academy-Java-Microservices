@@ -1,0 +1,32 @@
+IOfile
+l api che gestisce l IO segue principi di prog a ogg che sono uso di composizione e uso di inversione di controllo.
+ci sono 4 classi(interfacce .astrazioni) prncipali che sono strem di IO (diverso da stream funzionali )
+e sono IOstream e rider e writer.
+IOstream manipolano i byte e sono le piu elementari : sanno solo leggere e scrivere byte.rappresenta un flusso di byte che posso leggere o scrivere .
+possono essere scritt e letti da un baffur in memoria.
+FileIOstrem lavorano sul file system e bisogna passargli il file da aprire o scrive .
+IOexception classe usata per definire errori di IO(qualsiasi casino),FIle not found Exception è un problema preciso .
+tenere aperto un file per troppo tempo spreca risorse , conviene chiuderlo con close() che va chiamato .
+l eccezione rompe il flusso e mi fa uscire dal metodo prematuramente.
+quindi uso try with resource nel quale posso istanziare risorse che poi vanno chiuse automaticamente (ad esempio InputStrem x=new File inputstrem (""))con una close().
+try si aspettta di avere oggetti che implementano l autoclose.
+nonostante io legga byte per byte mi restituisce un intero(quando finisce il file mi da -1)(finche non diventa negativo il ciclo for nn finisce di leggere).
+per stamparlo devo fare un cast : syso((char)b).
+se l intero è zero vuol dire che devo aspettare.
+se uso il buffer la write ha bisogno di paramentri (buffer,0punto iniziale,n fino a cosa vuoi scrivere).
+in java le stringhe sono stringhe di caraterri a 16 bit (unicode16).sarebbe 2 alle 16 caratteri.
+bisogna evitare di usare caratteri no ìn ascii nei sorgenti di java.
+ogni volta che ho un bufferedreader i dati vengono prima accumulati in un buffer xo puo succedere se ho un buffer grande le mie println nn finiscono su disco...se voglio essere sicuro che tutto è adato su disco richiamo il metodo flus().
+percorso canonico:percorso vero del file.
+ 
+forEach si aspett un consumer che ha un unico metodo accept(). 
+le directory si leggono con FileVisitor.
+design pattern :è una soluzione a un problema ricorrente.
+l idea è scrivere un catalogo di pattern .
+pattern visitors : per cercare i nodi di una directory.
+ OPTIONAL:
+è un contenitore se è vuoto vuol dire null.
+
+
+API DATE E TIME:
+

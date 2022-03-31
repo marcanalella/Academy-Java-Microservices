@@ -1,0 +1,46 @@
+JEE6
+è un insieme di specifiche dette JSR.
+ad esempio per spedire mail con java.
+aggiunge anche strumenti di sviluppo detti SDK.
+ci sono piu implementazione quindi ci possono essere piu prodotti cn stessa implementazione .
+il sistema di sviluppo deve contenere per forza un application server.
+qnd scrivo codice devo seguire un linea architetturale chiamata container component.
+specif funzionali : cosa()
+specif non funzionali: come (che velocita devo avere ,quanti utenti) 
+Solo le specif funzionali devono diventare codice applicativo.solo una parta del mio codice diventa un componente .
+non mi devo preoccupare del ciclo di vita che è responsabilita del container .
+posso avere piu tipi di container differenti.
+
+layering:per eseguire op soft abbiamo bisogno di diversi livelli.
+CUBO ARCHITETTURALE
+il client: broswer ,dispositivi palmari.permettere l accesso al sisteme in remoto .è il piu soggettto  a cambiamenti.
+Database: strato di persistenza oppure strato dei dati .salvare i ddati per farli sopravvivere anche dopo lo spegnimento delle macchine .
+Business:ci sono procedure di elab che ricevo richieste dal client e operano su database.
+Presentation: cuscinetto tra client e business . 
+Integrazione: serve per evitare che lo strato business sia troppo legato allo strato database .
+il client in EE nn serve xke si concentra su server.
+idem database xke è un prodoto che nasce per conto suo .
+soluzione monolitica:unico prodotto con gia tutti i componenti inclusi .
+Specifiche nn funzionali.
+Scalabilità :saper gestire 1000 richieste la secondo.
+le specif funzionali si programmano , quelle nn funzionali si configurano .
+
+APLICATION SERVER:WildFly.
+modello di programmazione orientato agli eventi.
+tutte le capability sono fornite da wildfly.
+web contest: qll che devo mettere dopo l url .
+Webcontent : parte fisica .
+deployment descriptro: file di configurazione.
+WEBINF: cartella dve si trovano le risorse private come il codice .
+
+PRIMO COMPONENTE:servlet.
+è ua classe java . sta sullo stato di presentazione e funge da intermedario tra mondo esterno e business. è il primo componente che risponde ad una richiesta esterna.tutti gli accessi passano per lui dal mondo esterno.
+http server è un comp java specializzato per ricere richieste e dare risposte http.
+ogni servlet è mappata su una certa url esposta all esterno.
+tutti  i comp hanno bisogno di una parte di configurazione che si trova in un file .xml oppure si usano le annotazioni.se ci sono entrambi xml vince sulle annotazioni.
+controllore di business effettua le operazioni sui dati.
+il control di presentazione(front controller)(il servlet lo sa fare ) è il primo che interviene quando ce un richiesta e stabilisce le op in sequenza  da fare.
+validazione dati, e renderizzare i dati , ma nn sa rendirizzare .
+COMPONENTE JSP(java server page):è un ibrido tra html e java.
+è ua pagina di testo dentro la quale possiamo mettere codice java.sintassi <%= sintassi java  %>.
+

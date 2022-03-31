@@ -1,0 +1,47 @@
+lo scopo di REST è esporre una collezioeìne di risorse xke sia modificate 
+remotamete, l idea è riprendere il concetto original del web .
+GET solo per leggere,
+POST per aggiornare risorsa ,oppure costruire una risorsa subordinata,
+PUT per creare una risorsa,
+DELETE  per eliminare una risorsa.
+utilizza le cache .sono molti impo i framework javascript.
+le risorse sono associate all url che rappresentano entita,risorse.non ci devono essere verbi ma solo sostantivi nelle url.
+ se ho op da compiere devo creare uno stato che aggiorno con una post .
+JAXB ci permette di prendere una classe jav e tradurla in xml .quindi lo uso qnd voglio esporre le risorse.
+Per le chiavi su REST esiste UUID che crea una chiave identificativa sul web .
+
+DATABASE RELAZIONALE
+implementa il modello entità relazioni
+composto da tabella 
+un riga la chiamiamo record e rappresenta un entità.e ognuna ha una chiave.
+per mappare le relazioni tra entita si mappano relazioni tra chiavi.
+La chiave è obbligatoria.con vincolo di unicità quindi due record identici nn esistono.
+ORM object relationship mapper.
+ diff tra mondo a ogg e relazio è l impedenza.
+Specifica JPA permette di gestire un ORM in java.(java persistance architecture).
+la classe diventa un entita con l annotazione @Entity .
+I campi delle classi corrispondo alle colonne di una tabella.
+requisiti delle classi:non è richiesta serializzabilità ,deve avere attributi privati,
+gli attributi devono essere chiave primaria e la annotiamo con @Id,devono esserci equals and hashcode.
+i vincoli sono specificati con le annotazioni.
+puo essere che il tipo numerico sia piu grande nei database quindi ci sono nuove classi BigInteger e BigDecimal.
+ci sono anche nuovi tipi per le data j.s.Time.. TimeStamp..Date  .
+@EmbeddedID chiavi primarie composte da due variabii .
+PU cnfigurazione suf fper far funzinare il sistema(persistenz.xml)
+ENtyty manager:gestore ciclo di vita della classe entity.(per passare da un mondo all altro).
+si crea iniettando con@persitance contex, ha i metodi CRUD,posso creare query .
+PersistanzContex:dura solo per ogni transazione e contiene gli entity manager.
+CICLO VITA ENTITA:primo stato classe normale ,posso vedere new(),non è collegata al DB.
+se voglio inserirlo nel DB faccio una chiamata all entity manage em.persist(); e cosi diventa un componente entrando in stato managed,L app serve lo tiene d occhio e ora può esssere ancora manipolato come oggett normale,
+all iniio della transa tutti gli oggetti in stato managed vengono sincro nel DB,dopo la sincro ritorna ad esse ogg detach e un ogg normale con l unica diff che ora la sua chiave è presente nel DB . 
+se lo voglio riusare lo passo al metodo merge() facendolo ritornare managed con remove lo faccio ritornare normale . se faccio delle query gli ogg mi ritornano gia managed .
+equals e hashcode devono funzionare bene se no ho corruzione di dati.
+UNA TRANSAZIONE : è una sequenza di op su DB che deve essere atomica(si devono completare o tutte le op oppure nessuna),
+deve essere consistente(se ho piu client contemporanei nn devo vedere le modifiche parziali degli altri ),
+devono essere isolate e durabile anche se stacco la spina.
+io ho rsponsabilità di demarcare la transazione.(dove inizia e finisce).
+(begin:inizio , commit: finisco ,rollback:chiudo).
+Le transazioni si demarcano con le annotazioni:@TransactionAttribute:qnd chiamo il metodo demarcato con l annotaz prima faccio una begin e poi all afine il commint, se va qlks storto rollback.
+Faced : ogg che aspene un singolo metodo che racchiude al suo interno piu metodi di business.
+
+

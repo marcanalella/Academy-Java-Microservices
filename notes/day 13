@@ -1,0 +1,26 @@
+Federazione di servizi: anche se uno è in grado di fornire solo un parte di un servizio , sono capaci cmq tutti di lavorare insieme .
+per integrare tutti qst servizi...
+rest è orientato alla manipolazione di risorse con le op crud, mentre i webservice sono orientati al condivisione di interfacce con metodi liberi .
+tutto è standardizzato nei webservice .
+Con soap si ha una busta con un contenuto e degli headers che sarebbero ddei bollini che vengono messi ogni volta che si ha usato un servizio , tipo dopo l autenticazione avrò l header dell autenticazione , e gli altri utilizzatori usano la busta senza vedere il cntenuto .
+
+le api rest nn fanno parte di java 8 quindi devono essere importate nelle dipendenze del pom .
+Maven si occupa della gestione delle dipendenze transitive.
+
+Progetto Multimodulo:
+un modulo è un Pom, due moduli sono due pom.
+
+Nel super pom ci metto solo i plugin con le versioni di tutto quello che accumulo durante la mia carriera .
+
+WEBSOCKETS
+sono un protocollo di comunicazione non http e nn clietserver. è un protocollo peer to peer.
+mette in comunicazione tante entita contemporaneamente.in cui chiunque può prendere iniziativa di mandare un messaggio . e nn per forza deve esserci una risosta(asincroni).
+esempio:se devo aggiornare i valori delle azioni in borsa su una console generale.
+si basa su 3 mess predefiniti : ping e pong li manda internamente per verificare se la conn nn è caduta (ti dico ping ).
+con close qnd una parte chiude la comunicazioe .
+si apre pirma una conn http con una GET e poi faccio un upgrade del protocolllo e ti dico che ora in poi comunicherò tramite web socket .
+per creare un endpoint (websocket ) si annota la classe con @ServerEndPoint. e i metodi si annotano con @onClose @onOpen @OnError ecc..esiste il concetto dei PAthParam come in rest.
+
+esiste un ogg SESSION che mantiene l infrastruttura per spedire i mess e avra anche la lista di tutti i partner collegati (es partecipanti ad una chat ).
+si hanno convertitori di formato Decoder (input) endoder(output).
+

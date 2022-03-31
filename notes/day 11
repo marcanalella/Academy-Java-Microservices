@@ -1,0 +1,39 @@
+JPA: il DB non lo dobbianìmo vedere .lo manipoiamo senza scrivere in sql , piu o meno.creo ogg con new, poi voglio inserrlo nel db allora chiamo il metodo persist.
+l ogg cambia stato e diventa managed, ora rap la copia in memoria di un dato in db ,
+posso manipolare la entity cn metodi set e tutt le modifiche fatte vengono portate in db qnd viene conclusa la transazine . per le nuove entity fa una create per gli oggiornamenti un update ,dopo entrano in stato detached e sono ogg normali e l aplicatione scoped nn le vede piu .qnd uso merge mi restituisce una copia dell entity eme la fa tornare come attached quindi la merge si usa per fare op di aggiornamento.se ci sono entity che etrano in gioco con una query o un find entranogia in stato managed e se le vado a modificare alla fine dell tranizione loro venfgono aggiornate in db.
+persit funziona solo con entity in stato  exist in memory.se vooglio concellare il dato devo trovare l entyty con una find o query e poi uso remove.
+classe dao :classo che si occupa solo di manipolare entity di un certo tipo, in cui inietto un entity manager ma nn si usa @inject ma @PersistencScoped. 
+dato che si deve sfare iniezione la mia classe dao deve diventare un manager bean quindi gli metto @ApplicationScoped.
+Le transizioni si controllano con entity manager mettendo una notazioni @transaction attribute(lo posso mettere anche sulla classe).
+il supporto delle transazioni nn è supportato sui managerbean. quidni applicantionscoped nn va bene e lo dobbiamo sostituire con una noteìazione @Singleto.
+tra classe e classe dao è opportuno passare attraverso un interfaccia.
+
+CREAZIONE CLASSE JPA ENTITY:
+annotazione ENTIY.
+annotazione TABLE e COLuMN.
+nn si puo usare optioal.
+ annotazione GENERATEDVALUE per le chiavi.
+annotazione ID .
+inseriri set e get.
+inserire hashcode e equals.
+inserirte to string(per debug).
+fare interfaccia  dao per ogni entity.
+creare un package per sole entity.
+creare la classe(jpaproductdao) dao che implementa l interfaccia con annotazione SINGKETON e @TransactionAttribute.
+
+dichiarare l entity manager con annotazione @persistenceContex.
+Creare la cartella META-INF in src/main/resources e inserirgli il file persistance.xml.
+in cui bisogna specificare il nome del datasource e il persist unit con puntatore al datasource.
+implementare i metodi usando il dao e inserendoli anche nell interfaccia sostituendo al MockPrduct manager una classe default product manager
+
+
+DISAMBIGUAZIONE: 2 modi .
+1-scrivere un file di configurazione.
+2-con un annotazione @Named. (chiamata qualizìficazione).
+
+
+RELAZIONI:
+hanno cardinalità ,possono esserre unidirezionali(si può navigare solo da un lato all altro) o bidirezionali(in qualsiasi direzione).
+ 
+se creiamo una nuova entity in memory la creiamo senza chiave.
+
